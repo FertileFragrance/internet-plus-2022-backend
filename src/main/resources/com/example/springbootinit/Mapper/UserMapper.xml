@@ -1,0 +1,65 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!--<mapper namespace="com.example.springbootinit.Mapper.UserMapper">-->
+
+
+<!--    <resultMap id="BaseResultMap" type="com.example.springbootinit.Entity.User">-->
+<!--        <result column="id" jdbcType="INTEGER" property="id"/>-->
+<!--        <result column="userName" jdbcType="VARCHAR" property="userName"/>-->
+<!--        <result column="passWord" jdbcType="VARCHAR" property="passWord"/>-->
+<!--    </resultMap>-->
+<!--    &lt;!&ndash;查询用户信息&ndash;&gt;-->
+<!--    <select id="getUserInfo" resultType="com.example.springbootinit.Entity.User">-->
+<!--        select * from user where id = #{id}-->
+<!--    </select>-->
+<!--    &lt;!&ndash;删除用户信息&ndash;&gt;-->
+<!--    <delete id="deleteById" parameterType="int">-->
+<!--        delete from user where id=#{id}-->
+<!--    </delete>-->
+<!--    &lt;!&ndash;返回所有用户信息&ndash;&gt;-->
+<!--    <select id="selectAll" resultType="com.example.springbootinit.Entity.User">-->
+<!--        select * from user-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;增加用户信息&ndash;&gt;-->
+<!--    <insert id="save" parameterType="com.example.springbootinit.Entity.User">-->
+<!--        insert into user-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--            <if test="id != null">-->
+<!--                id,-->
+<!--            </if>-->
+<!--            <if test="userName != null">-->
+<!--                userName,-->
+<!--            </if>-->
+<!--            <if test="passWord != null">-->
+<!--                passWord,-->
+<!--            </if>-->
+
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--            <if test="id != null">-->
+<!--                #{id,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--            <if test="userName != null">-->
+<!--                #{userName,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="passWord != null">-->
+<!--                #{passWord,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;根据id更改用户信息&ndash;&gt;-->
+<!--    <update id="update" parameterType="com.example.springbootinit.Entity.User">-->
+<!--        update user-->
+<!--        <set>-->
+<!--            <if test="userName != null">-->
+<!--                userName = #{userName,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="passWord != null">-->
+<!--                passWord = #{passWord,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        where id = #{id,jdbcType=INTEGER}-->
+<!--    </update>-->
+<!--</mapper>-->

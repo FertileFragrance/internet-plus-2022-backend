@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20211226_1_alterPenalty" author="csy">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="penalty"/>
+            <sqlCheck expectedResult="0">select count(*) from penalty</sqlCheck>
+        </preConditions>
+
+        <comment>新增penalty表字段</comment>
+        <addColumn
+                schemaName="internetPractice"
+                tableName="penalty">
+            <column afterColumn="decision" name="fine" type="double" remarks="罚金"/>
+
+            <column afterColumn="decision" name="punishmentType" type="varchar(64)" remarks="行政处罚类型"/>
+
+            <column afterColumn="organName" name="province" type="varchar(64)" remarks="省份"/>
+        </addColumn>
+    </changeSet>
+
+    <!-- <changeSet id="20211227_1_insertPenalties" author="csy">
+         <comment>往penalty表插入testData.csv中的数据</comment>
+         <loadData
+                 encoding="UTF-8"
+                 file="db/penalty/csv/testData.csv"
+                 schemaName="internetPractice"
+                 separator=","
+                 tableName="penalty">
+             <column name="id" header="id" type="skip" />
+         </loadData>
+     </changeSet>-->
+</databaseChangeLog>

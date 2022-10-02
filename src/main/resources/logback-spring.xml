@@ -1,0 +1,37 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <!--
+            日志输出格式：
+                %d表示日期时间，
+                %thread表示线程名，
+                %-5level：级别从左显示5个字符宽度
+                %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
+                %msg：日志消息
+                %n是换行符
+                %-15.15():如果记录的线程字符长度小于15(第一个)则用空格在右侧补齐,如果字符长度大于15(第二个),则从开头开始截断多余的字符
+                %-50.50()：如果记录的logger字符长度小于50(第一个)则用空格在右侧补齐,如果字符长度大于50(第二个),则从开头开始截断多余的字符
+                %highlight()：颜色，info为蓝色，warn为浅红，error为加粗红，debug为黑色
+                %boldMagenta:粗红
+                %magenta:洋红
+                %cyan:青色
+                %white:白色
+            -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta([%-15.15(%thread)]) %cyan(%-50.50(%logger{50} )) : %msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="chapters.configuration" level="INFO"/>
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

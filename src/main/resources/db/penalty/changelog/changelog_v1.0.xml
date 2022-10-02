@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <changeSet id="20211024_1_createPenalty" author="csy">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="penalty"/>
+            </not>
+        </preConditions>
+
+        <comment>建立penalty表</comment>
+        <createTable tableName="penalty">
+
+            <column name="id" type="int" autoIncrement="true" remarks="主键"   >
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+
+            <column name="name" type="varchar(64)" remarks="行政处罚名称"  >
+                <constraints nullable="false" />
+            </column>
+
+            <column name="number" type="varchar(128)" remarks="行政处罚决定文号"  >
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="type" type="tinyint" remarks="处罚类型(0:个人|1:企业)"  >
+                <constraints nullable="false" />
+            </column>
+
+            <column name="partyName" type="varchar(64)" remarks="被罚当事人名称"   >
+                <constraints nullable="false" />
+            </column>
+
+            <column name="responsiblePersonName" type="varchar(64)" remarks="主要负责人姓名" />
+
+            <column name="facts" type="varchar(256)" remarks="主要违法违规事实" />
+
+            <column name="basis" type="varchar(256)" remarks="行政处罚依据"/>
+
+            <column name="decision" type="varchar(512)" remarks="行政处罚决定"/>
+
+            <column name="organName" type="varchar(64)" remarks="行政处罚机关名称"/>
+
+            <column name="date" type="date" remarks="行政处罚日期"/>
+
+            <column name="status" type="tinyint"  defaultValue="0" remarks="发布状态(0:未发布|1:已发布)"   >
+                <constraints nullable="false" />
+            </column>
+
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
