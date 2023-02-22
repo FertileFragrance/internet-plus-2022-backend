@@ -2,10 +2,10 @@
 spring:
   ##数据库连接信息
   datasource:
-    url: jdbc:mysql://localhost:3306/internetPractice?useUnicode=true&characterEncoding=gbk
+    url: jdbc:mysql://localhost:3306/internet2022?useUnicode=true&characterEncoding=gbk
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     ###################以下为druid增加的配置###########################
     type: com.alibaba.druid.pool.DruidDataSource
     # 下面为连接池的补充设置，应用到上面所有数据源中
