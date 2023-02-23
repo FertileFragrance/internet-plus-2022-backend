@@ -25,12 +25,12 @@ public class InnerPolicy {
     private String chapter;
 
     @Column(name = "article")
-    private Integer article;
+    private String article;
 
     @Column(name = "content")
     private String content;
 
-    public InnerPolicy(Integer id, String file, String department, String chapter, Integer article, String content) {
+    public InnerPolicy(Integer id, String file, String department, String chapter, String article, String content) {
         this.id = id;
         this.file = file;
         this.department = department;

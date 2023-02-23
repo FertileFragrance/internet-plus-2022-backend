@@ -42,13 +42,12 @@ public class IR {
             while (rs.next()) {
                 INNER_POLICIES.add(new InnerPolicy(rs.getInt("id"), rs.getString("file"),
                         rs.getString("department"), rs.getString("chapter"),
-                        rs.getInt("article"), rs.getString("content")));
+                        rs.getString("article"), rs.getString("content")));
             }
             conn.close();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println(INNER_POLICIES);
     }
 
     private static void matchInnerPolicy(Integer penaltyId, String basis) {
@@ -86,6 +85,7 @@ public class IR {
             }
         }
         try {
+            assert conn != null;
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,6 +156,7 @@ public class IR {
             cosineValues.add(Pair.of(index, dotProduct / (basisModulus * innerPolicyModulus)));
             index++;
         }
+        cosineValues.removeIf(cosineValue -> cosineValue.getRight().isNaN());
         cosineValues.sort((o1, o2) -> o2.getRight().compareTo(o1.getRight()));
         return cosineValues;
     }
