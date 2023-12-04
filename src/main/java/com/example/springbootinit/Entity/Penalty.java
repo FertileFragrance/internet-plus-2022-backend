@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -67,4 +68,40 @@ public class Penalty {
         if(status == null) status = 0;
     }
 
+    public Penalty(Integer id, String name, String number, Integer type, String partyName,
+                   String responsiblePersonName, String facts, String basis, String decision,
+                   String punishmentType, Double fine, String organName, String province,
+                   LocalDate date, Integer status) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+        this.type = type;
+        this.partyName = partyName;
+        this.responsiblePersonName = responsiblePersonName;
+        this.facts = facts;
+        this.basis = basis;
+        this.decision = decision;
+        this.punishmentType = punishmentType;
+        this.fine = fine;
+        this.organName = organName;
+        this.province = province;
+        this.date = date;
+        this.status = status;
+    }
+
+    public Penalty() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Penalty penalty = (Penalty) o;
+        return Objects.equals(id, penalty.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

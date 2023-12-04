@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Column;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Data
 @ExcelTarget(value = "penalty")
@@ -72,4 +73,17 @@ public class PenaltyVO {
     @Pattern(regexp = "^(0|1)$", message = "不存在的状态")
     @Excel(name = "发布状态")
     private String status; //发布状态('0':未发布|'1':已发布)
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PenaltyVO penaltyVO = (PenaltyVO) o;
+        return Objects.equals(id, penaltyVO.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
